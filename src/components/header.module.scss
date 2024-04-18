@@ -1,0 +1,6 @@
+.nav-link {
+    font-weight: 900;
+	&:global(.active) {
+		color: green !important;
+	}
+}

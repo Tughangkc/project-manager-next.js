@@ -1,0 +1,14 @@
+
+
+$font-family-sans-serif: var(--font-roboto);
+@import "bootstrap/scss/bootstrap";
+
+
+
+h1,h2,h3,span{
+    font-family: var(--font-montserrat-subrayda);
+}
+
+.navbar-nav .nav-link.active, .navbar-nav .nav-link.show {
+    color: red;
+}
