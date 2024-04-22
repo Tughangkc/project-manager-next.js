@@ -3,13 +3,21 @@ import Image from 'next/image'
 import React from 'react'
 import { Badge, Card } from 'react-bootstrap'
 import "./product-card.scss"
+import { useRouter } from 'next/navigation'
+import FlexImage from './flex-image'
 
-const ProductCard = ({title,price,image}) => {
+
+const ProductCard = ({id,title,price,image}) => {
+    const router = useRouter();
+    const handleClick = () => {
+        router.push(`/products/${id}`)
+
+      
+    }
+    
   return (
-    <Card className='product-card'>
-        <div className='image'>
-      <Image src= {image} alt={title} fill className='card-img-top'/>
-        </div>
+    <Card className='product-card' onClick={handleClick}>
+        <FlexImage src={image} alt={title} height='200px'/>
       <Card.Body>
         <Card.Title>{title}</Card.Title>
         <Card.Subtitle>
