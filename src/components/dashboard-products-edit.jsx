@@ -2,31 +2,32 @@
 import React from "react";
 import { Button, Form, InputGroup } from "react-bootstrap";
 import ButtonBack from "./button-back";
-const DashboardProductsNew = () => {
+const DashboardProductsEdit = ({product}) => {
     return (
         <Form>
             <Form.Group className="mb-3">
                 <Form.Label>Title</Form.Label>
-                <Form.Control type="text" />
+                <Form.Control type="text" defaultValue ={product.title}/>
             </Form.Group>
             <Form.Group className="mb-3">
                 <Form.Label>Description</Form.Label>
-                <Form.Control type="text" />
+                <Form.Control type="text" defaultValue ={product.description}/>
             </Form.Group>
             <Form.Group className="mb-3">
                 <Form.Label>Category</Form.Label>
-                <Form.Select aria-label="Default select example">
+                <Form.Select defaultValue ={product.category}>
                     <option>Select</option>
                     <option value="Home">Home</option>
                     <option value="Computers">Computers</option>
                     <option value="Clothing">Clothing</option>
                     <option value="Kids">Kids</option>
                     <option value="Grocery">Grocery</option>
+                    <option value="Tools">Tools</option>
                 </Form.Select>
             </Form.Group>
             <Form.Group className="mb-3">
                 <Form.Label>Price</Form.Label>
-                <Form.Control type="number" />
+                <Form.Control type="number" defaultValue ={product.price} />
             </Form.Group>
             <Form.Group className="mb-3">
                 <Form.Label>Image</Form.Label>
@@ -44,9 +45,9 @@ const DashboardProductsNew = () => {
             </Form.Group>
             <div className="d-flex justify-content-between">
             <ButtonBack/>
-            <Button type="submit" variant="danger">Create</Button>
+            <Button type="submit" variant="danger">Update</Button>
             </div>
         </Form>
     );
 };
-export default DashboardProductsNew;
+export default DashboardProductsEdit;
