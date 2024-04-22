@@ -1,5 +1,6 @@
 import PageHeader from '@/components/page-header'
 import ProductList from '@/components/product-list'
+import Spacer from '@/components/spacer'
 import { config } from '@/helpers/config'
 import React from 'react'
 
@@ -17,7 +18,9 @@ const ProductPage = async() => {
   return (
     <div>
       <PageHeader title="Products"/>
+      <Spacer/>
       <ProductList products={products}/>
+      <Spacer/>
     </div>
   )
 }

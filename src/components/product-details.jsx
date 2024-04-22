@@ -13,9 +13,9 @@ const ProductDetails = ({product}) => {
         <Col md ={6}>
             <h2>{title}</h2>
             <p>{description}</p>
-            <h4>
+            <h4 className='d-flex justify-content-between'>
                 <Badge>{category}</Badge>
-                <Badge>{price}</Badge>
+                <Badge bg="warning">${price}</Badge>
             </h4>
         </Col>
     </Row>
