@@ -3,6 +3,8 @@ import React from "react";
 import { Button, Form, InputGroup } from "react-bootstrap";
 import ButtonBack from "./button-back";
 const DashboardProductsEdit = ({product}) => {
+
+    const imageUrl = new URL (product.image)
     return (
         <Form>
             <Form.Group className="mb-3">
@@ -32,7 +34,7 @@ const DashboardProductsEdit = ({product}) => {
             <Form.Group className="mb-3">
                 <Form.Label>Image</Form.Label>
                 <InputGroup>
-                    <Form.Select>
+                    <Form.Select defaultValue={imageUrl.origin}>
                         <option value="https://images.pexels.com">
                             Pexels
                         </option>
@@ -40,7 +42,7 @@ const DashboardProductsEdit = ({product}) => {
                             Lorem Flickr
                         </option>
                     </Form.Select>
-                    <Form.Control type="text"/>
+                    <Form.Control type="text" defaultValue={imageUrl.pathname}/>
                 </InputGroup>
             </Form.Group>
             <div className="d-flex justify-content-between">

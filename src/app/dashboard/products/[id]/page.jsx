@@ -10,6 +10,7 @@ const EditProductPage = async ({ params }) => {
 	if(!res.ok) notFound();
 	const product = await res.json();
 	
+	console.log(new URL(product.image))
 
 	return <div>
 		<DashboardProductsEdit product={product}/>
