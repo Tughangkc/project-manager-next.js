@@ -7,11 +7,12 @@ const EditProductPage = async ({ params }) => {
 	const productId = params.id;
 	
 	const res = await fetch(`${config.apiURL}/products/${productId}`);
-	if(!res.ok) notFound();
 	const product = await res.json();
 	
-	console.log(new URL(product.image))
-
+	
+	
+	if(!res.ok) notFound();
+	
 	return <div>
 		<DashboardProductsEdit product={product}/>
 	</div>;

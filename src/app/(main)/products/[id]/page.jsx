@@ -4,6 +4,7 @@ import PageHeader from "@/components/page-header";
 import { config } from "@/helpers/config";
 import ProductDetails from "@/components/product-details";
 import Spacer from "@/components/spacer";
+import ProductsInSameCategory from "@/components/products-in-same-category";
 
 export const generateMetadata = async({params}) => {
 	const productId = params.id;
@@ -19,10 +20,13 @@ export const generateMetadata = async({params}) => {
 };
 const ProductDetailsPage = async ({ params }) => {
     const productId = params.id;
-    if(!productId) throw new Error("ProductId is missing!");
-    const res = await fetch(`${config.apiURL}/products/${productId}`);
-    if(!res.ok) notFound();
-    const product = await res.json();
+    const fetchProduct = (await fetch(`${config.apiURL}/products/${productId}`)).json();
+	const fetchProducts = (await fetch(`${config.apiURL}/products`)).json();
+
+	const [product,products] = await Promise.all([fetchProduct,fetchProducts])
+
+
+	if(!product) notFound();
     // console.log(product)
     
     
@@ -32,6 +36,8 @@ const ProductDetailsPage = async ({ params }) => {
 			<Spacer/>
 			<ProductDetails product={product}/>
 			<Spacer/>
+            <ProductsInSameCategory products={products}/>
+            <Spacer/>
         </>
     );
 };
