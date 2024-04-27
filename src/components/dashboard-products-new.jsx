@@ -2,20 +2,21 @@
 import React from "react";
 import { Button, Form, InputGroup } from "react-bootstrap";
 import ButtonBack from "./button-back";
+import { createProductAction } from "@/actions/product-actions";
 const DashboardProductsNew = () => {
     return (
-        <Form>
+        <Form action={createProductAction}>
             <Form.Group className="mb-3">
                 <Form.Label>Title</Form.Label>
-                <Form.Control type="text" />
+                <Form.Control type="text"  name = "title"/>
             </Form.Group>
             <Form.Group className="mb-3">
                 <Form.Label>Description</Form.Label>
-                <Form.Control type="text" />
+                <Form.Control type="text"  name = "description"/>
             </Form.Group>
             <Form.Group className="mb-3">
                 <Form.Label>Category</Form.Label>
-                <Form.Select aria-label="Default select example">
+                <Form.Select  name = "category">
                     <option>Select</option>
                     <option value="Home">Home</option>
                     <option value="Computers">Computers</option>
@@ -26,12 +27,12 @@ const DashboardProductsNew = () => {
             </Form.Group>
             <Form.Group className="mb-3">
                 <Form.Label>Price</Form.Label>
-                <Form.Control type="number" />
+                <Form.Control type="number"  name = "price" />
             </Form.Group>
             <Form.Group className="mb-3">
                 <Form.Label>Image</Form.Label>
                 <InputGroup>
-                    <Form.Select>
+                    <Form.Select  name = "imageBaseUrl">
                         <option value="https://images.pexels.com">
                             Pexels
                         </option>
@@ -39,7 +40,7 @@ const DashboardProductsNew = () => {
                             Lorem Flickr
                         </option>
                     </Form.Select>
-                    <Form.Control type="text"/>
+                    <Form.Control type="text"  name = "image"/>
                 </InputGroup>
             </Form.Group>
             <div className="d-flex justify-content-between">
