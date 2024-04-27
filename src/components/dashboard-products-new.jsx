@@ -3,9 +3,16 @@ import React from "react";
 import { Button, Form, InputGroup } from "react-bootstrap";
 import ButtonBack from "./button-back";
 import { createProductAction } from "@/actions/product-actions";
+import { useFormState } from "react-dom";
+
 const DashboardProductsNew = () => {
+    const initialState = { message: "", errors: {} };
+
+    const [state, dispatch] = useFormState(createProductAction, initialState)
+
+    console.log(state)
     return (
-        <Form action={createProductAction}>
+        <Form action={dispatch}>
             <Form.Group className="mb-3">
                 <Form.Label>Title</Form.Label>
                 <Form.Control type="text"  name = "title"/>
@@ -16,8 +23,8 @@ const DashboardProductsNew = () => {
             </Form.Group>
             <Form.Group className="mb-3">
                 <Form.Label>Category</Form.Label>
-                <Form.Select  name = "category">
-                    <option>Select</option>
+                <Form.Select  name = "category" defaultValue="">
+                    <option value="" disabled  > Select</option>
                     <option value="Home">Home</option>
                     <option value="Computers">Computers</option>
                     <option value="Clothing">Clothing</option>
@@ -32,7 +39,8 @@ const DashboardProductsNew = () => {
             <Form.Group className="mb-3">
                 <Form.Label>Image</Form.Label>
                 <InputGroup>
-                    <Form.Select  name = "imageBaseUrl">
+                    <Form.Select  name = "imageBaseUrl" defaultValue="">
+                    <option value="" disabled > Select</option>
                         <option value="https://images.pexels.com">
                             Pexels
                         </option>
