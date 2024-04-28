@@ -2,11 +2,17 @@
 import React from "react";
 import { Button, Form, InputGroup } from "react-bootstrap";
 import ButtonBack from "./button-back";
+import {useFormState} from "react-dom";
 const DashboardProductsEdit = ({product}) => {
+    const initialState = {ok:false, message:null, errors:{}};
 
-    const imageUrl = new URL (product.image)
+    const [] = useFormState();
+
+    const imageUrl = new URL (product.image);
+
     return (
         <Form>
+            <input type="hidden" name="id" defaultValue={product.id}/>
             <Form.Group className="mb-3">
                 <Form.Label>Title</Form.Label>
                 <Form.Control type="text" defaultValue ={product.title}/>
