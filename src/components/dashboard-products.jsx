@@ -2,6 +2,7 @@ import Link from 'next/link'
 import React from 'react'
 import { Button, Table } from 'react-bootstrap'
 import { MdDelete, MdEdit } from "react-icons/md";
+import DeleteProductButton from './delete-product-button';
 
 const DashboardProducts = ({products}) => {
   return (
@@ -24,7 +25,7 @@ const DashboardProducts = ({products}) => {
                     <td>${item.price}</td>
                     <td>
                         <Link className='btn' href={`/dashboard/products/${item.id}`}><MdEdit /></Link>
-                        <Button variant='link' className='text-danger'><MdDelete /></Button>
+                        <DeleteProductButton id={item.id}/>
                     </td>
 
                 </tr>

@@ -8,7 +8,7 @@ export const convertFormDataToJSON = (formData) => {
     errors.forEach((error) => (errObject[error.path] = error.message));
     return {
         ok: false,
-        message: "Something went wrong",
+        message: "Something went wrong. Try again later",
         errors: errObject
     };
 };

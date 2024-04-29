@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect } from "react";
-import { Button, Form, InputGroup } from "react-bootstrap";
+import { Alert, Button, Form, InputGroup } from "react-bootstrap";
 import ButtonBack from "./button-back";
 import { createProductAction } from "@/actions/product-actions";
 import { useFormState } from "react-dom";
@@ -15,7 +15,6 @@ const DashboardProductsNew = () => {
         if(state.ok){
             Swal.fire({
                 title: state.message,
-                text: 'Do you want to continue',
                 icon: 'success',    
               });
     
@@ -25,6 +24,8 @@ const DashboardProductsNew = () => {
     }, [state.ok])
 
     return (
+        <>
+        {!state.ok && state.message ? (<Alert variant="danger">{state.message}</ Alert>) :null}
         <Form action={dispatch}>
             <Form.Group className="mb-3">
                 <Form.Label>Title</Form.Label>
@@ -110,6 +111,7 @@ const DashboardProductsNew = () => {
                 </Button>
             </div>
         </Form>
+        </>
     );
 };
 export default DashboardProductsNew;
