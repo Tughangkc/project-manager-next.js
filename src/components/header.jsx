@@ -7,10 +7,13 @@ import { usePathname } from "next/navigation";
 import { navLink } from "./header.module.scss";
 import logo from "../../public/images/logo.png";
 import Image from "next/image";
+import {useSession} from "next-auth/react"
 
 const Header = () => {
 	const pathname = usePathname();
+	const {data: session} = useSession();
 
+	console.log("session", session)
 	return (
 		<Navbar
 			expand="lg"
@@ -28,9 +31,12 @@ const Header = () => {
 					/>
 				</Navbar.Brand>
 
-				<Link href="/dashboard" className="order-lg-2 nav-link text-light">
+				{session ? <Link href="/dashboard" className="order-lg-2 nav-link text-light">
 					Dashboard
-				</Link>
+				</Link> : <Link href="/api/auth/signin" className="order-lg-2 nav-link text-light">
+					Login
+				</Link> }
+				
 
 				<Navbar.Toggle aria-controls="basic-navbar-nav" />
 				<Navbar.Collapse id="basic-navbar-nav">

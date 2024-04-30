@@ -1,6 +1,7 @@
 
 import { montserratsubrayada, roboto } from "@/helpers/fonts";
 import "../global.scss";
+import { SessionProvider } from "next-auth/react";
 
 
 
@@ -19,7 +20,9 @@ export default function RootLayout({ children }) {
 			<body
 				className={`${roboto.className} d-flex flex-column justify-content-between h-100`}
 			>
+				<SessionProvider>
 				{children}
+				</SessionProvider>
 			</body>
 		</html>
 	);

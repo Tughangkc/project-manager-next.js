@@ -1,3 +1,5 @@
+import LoginForm from '@/components/login-form'
+import PageHeader from '@/components/page-header'
 import React from 'react'
 
 export const metadata ={
@@ -6,7 +8,10 @@ export const metadata ={
 }
 const LoginPage = () => {
   return (
-    <div>LoginPage</div>
+    <div>
+      <PageHeader title="Login"/>
+      <LoginForm/>
+    </div>
   )
 }
 

@@ -30,13 +30,14 @@ const config = {
     ],
     callbacks: {
         authorized({request, auth}){
-            console.log("request", request);
-            console.log("auth", auth);
             const {pathname} = request.nextUrl;
             if(pathname.startsWith("/dashboard")) return !!auth;
             return true;
         },
     },
+    pages:{
+        signIn: "/login"
+    }
 
 };
 export const {handlers, signIn, signOut, auth} = NextAuth(config)
