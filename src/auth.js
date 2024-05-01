@@ -30,8 +30,18 @@ const config = {
     ],
     callbacks: {
         authorized({request, auth}){
-            const {pathname} = request.nextUrl;
-            if(pathname.startsWith("/dashboard")) return !!auth;
+            const {pathname, searchParams} = request.nextUrl;
+
+            const isUserLoggedIn = !!auth;
+            const isUserInLoginPage = pathname === "/login";
+
+            if(isUserLoggedIn && isUserInLoginPage){
+                const callbackURL = searchParams.get("callbackUrl") || "/dashboard";
+                const url = new URL(callbackURL, request.nextUrl)
+                return Response.redirect(url);
+            }
+
+            if(pathname.startsWith("/dashboard")) return isUserLoggedIn;
             return true;
         },
     },
